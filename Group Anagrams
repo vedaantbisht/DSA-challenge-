@@ -1,0 +1,27 @@
+#Group Anagrams
+##leetcode question
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string, vector<string>> val;
+
+        for(string str : strs){
+            string key = str;
+            sort(key.begin(), key.end());
+            val[key].push_back(str);
+        }
+        vector<vector<string>> result;
+        for(auto &pair : val){
+            result.push_back(pair.second);
+        }
+        return result;
+    }
+};
+/*
+Input
+strs =
+["eat","tea","tan","ate","nat","bat"]
+Output
+[["bat"],["tan","nat"],["eat","tea","ate"]]
+*/
