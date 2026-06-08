@@ -1,0 +1,43 @@
+// Min Stack
+
+class MinStack {
+public:
+    stack<int> TS;
+    stack<int> MIN_TS;
+
+    MinStack() {
+        
+    }
+
+    void push(int value) {
+        TS.push(value);
+
+        if (MIN_TS.empty() || value <= MIN_TS.top()) {
+            MIN_TS.push(value);
+        } else {
+            MIN_TS.push(MIN_TS.top());
+        }
+    }
+
+    void pop() {
+        TS.pop();
+        MIN_TS.pop();
+    }
+
+    int top() {
+        return TS.top();
+    }
+
+    int getMin() {
+        return MIN_TS.top();
+    }
+};
+
+/*
+["MinStack","push","push","push","getMin","pop","top","getMin"]
+[[],[-2],[0],[-3],[],[],[],[]]
+Output
+[null,null,null,null,-3,null,0,-2]
+Expected
+[null,null,null,null,-3,null,0,-2]
+*/
