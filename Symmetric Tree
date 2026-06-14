@@ -1,0 +1,41 @@
+//Symmetric Tree
+
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if(root == nullptr){
+            return true;
+        }
+        queue<TreeNode*> val;
+        
+        val.push(root->left);
+        val.push(root->right);
+
+        while(!val.empty()){
+            TreeNode* left = val.front();
+            val.pop();
+
+            TreeNode* right = val.front();
+            val.pop();
+
+            if(left ==nullptr && right == nullptr){
+                continue;
+            }
+            if(left ==nullptr || right == nullptr){
+                return false;
+            }
+            if(left -> val !=right ->val){
+                return false;
+            }
+            val.push(left ->left);
+            val.push(right-> right);
+            val.push(left -> right);
+            val.push(right -> left);
+        }
+        return true;
+    }
+};
+
+/*
+
+*/
