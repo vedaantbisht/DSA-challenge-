@@ -1,0 +1,47 @@
+//Merge Two Sorted Lists
+
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode* p = list1;
+        ListNode* q = list2;
+
+        ListNode*head=new ListNode(-1);
+        ListNode* curr =  head;
+
+        while(p != NULL && q != NULL){
+            if(p ->val <= q ->val){
+                curr ->next =p;
+                p = p->next;
+            }
+
+            else{
+                curr -> next = q;
+                q = q ->next;
+            }
+
+            curr = curr -> next;
+        }
+
+        if(p != NULL){
+            curr ->next =p;
+        }
+        else{
+            curr ->next = q;
+        }
+        return head -> next;
+    }
+};
+
+/*
+Input
+list1 =
+[1,2,4]
+list2 =
+[1,3,4]
+Output
+[1,1,2,3,4,4]
+Expected
+[1,1,2,3,4,4]
+
+*/
