@@ -1,0 +1,49 @@
+//Implement Queue using Stacks
+
+class MyQueue {
+public:
+    stack<int> s1;
+    stack<int> s2;
+
+    MyQueue() {
+        
+    }
+    
+    void push(int x) {
+        while(!s1.empty()){
+            int val = s1.top();
+            s1.pop();
+            s2.push(val);
+        }
+        s1.push(x);
+        while(!s2.empty()){
+            int val = s2.top();
+            s2.pop();
+            s1.push(val);
+        }
+    }
+    
+    int pop() {
+        int val = s1.top();
+        s1.pop();
+        return val;
+    }
+    
+    int peek() {
+       return s1.top(); 
+    }
+    
+    bool empty() {
+        return s1.empty();
+    }
+};
+
+/*
+Input
+["MyQueue","push","push","peek","pop","empty"]
+[[],[1],[2],[],[],[]]
+Output
+[null,null,null,1,1,false]
+Expected
+[null,null,null,1,1,false]
+*/
