@@ -1,0 +1,39 @@
+//Binary Tree Right Side View
+
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> ans;
+        if(root == NULL){
+            return ans;
+        }
+        queue<TreeNode*>val;
+        val.push(root);
+        while(!val.empty()){
+            int size = val.size();
+        for(int i =0; i<size; i++){
+            TreeNode* curr = val.front();
+            val.pop();
+
+            if( i == size-1){
+                ans.push_back(curr -> val);
+            }
+            if(curr ->left != NULL){
+                val.push(curr -> left);
+            }
+            if(curr ->right != NULL){
+                val.push(curr -> right);
+            }
+        }
+        }  
+        return ans;
+
+    }
+};
+
+/*
+Input
+root =[1,2,3,null,5,null,4]
+Output [1,3,4]
+Expected [1,3,4]
+*/
