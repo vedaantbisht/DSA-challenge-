@@ -1,0 +1,36 @@
+//Trapping Rain Water
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+
+        int n = height.size();
+        int water = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            int Lmax = 0;
+            int Rmax = 0;
+
+            for (int j = 0; j <= i; j++) {
+                Lmax = max(Lmax, height[j]);
+            }
+
+            for (int j = i; j < n; j++) {
+                Rmax = max(Rmax, height[j]);
+            }
+
+            water += min(Lmax, Rmax) - height[i];
+        }
+
+        return water;
+    }
+};
+
+/*
+height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output
+6
+Expected
+6
+*/
